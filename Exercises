@@ -1,0 +1,60 @@
+------------------------------------------------------------------------------------------------
+--
+-- Exercise 1
+--
+------------------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------------------------------------------------------
+--
+-- Exercise 2
+--
+------------------------------------------------------------------------------------------------
+
+SELECT person_name, person_country, person_dob FROM tb_person WHERE person_dod IS NULL ORDER BY person_dob ASC;
+
+------------------------------------------------------------------------------------------------
+--
+-- Exercise 3
+--
+------------------------------------------------------------------------------------------------
+
+SELECT tg.genre_name, COUNT(movie_title) AS numberfilms FROM tb_movie LEFT JOIN tb_genre AS tg ON tb_movie.movie_genre_id=tg.genre_id GROUP BY genre_name ORDER BY numberfilms DESC;
+
+------------------------------------------------------------------------------------------------
+--
+-- Exercise 4
+--
+------------------------------------------------------------------------------------------------
+
+SELECT  person_name, COUNT(tr.role_id) AS role_nums, tm.movie_title FROM tb_movie_person AS tmp,tb_person AS tp,tb_role AS tr, tb_movie AS tm WHERE tp.person_id=tmp.person_id AND tr.role_id=tmp.role_id  AND tm.movie_id=tmp.movie_id GROUP BY tmp.movie_id,tp.person_id ORDER BY person_name;
+SELECT  person_name, COUNT(tr.role_id) AS role_nums FROM tb_movie_person AS tmp,tb_person AS tp,tb_role AS tr WHERE tp.person_id=tmp.person_id AND tr.role_id=tmp.role_id GROUP BY tmp.movie_id,tp.person_id HAVING role_nums>1 ORDER BY person_name;
+
+------------------------------------------------------------------------------------------------
+--
+-- Exercise 5
+--
+------------------------------------------------------------------------------------------------
+
+INSERT INTO tb_genre (genre_id,genre_name,created_by_user) VALUES ('69','Documental','dsstud');
+
+------------------------------------------------------------------------------------------------
+--
+-- Exercise 6
+--
+------------------------------------------------------------------------------------------------
+
+SET FOREIGN_KEY_CHECKS=0;
+DELETE FROM tb_movie WHERE movie_title='La Gran Familia Española';
+SET FOREIGN_KEY_CHECKS=1;
+
+-- You can disable foreign_key checks or you can modify the schema of the foreign keys, thus needing to create a new table, as they express the relational nature of the database
+
+------------------------------------------------------------------------------------------------
+--
+-- Exercise 7
+--
+------------------------------------------------------------------------------------------------
+
+UPDATE tb_movie SET movie_genre_id=3 WHERE movie_title='Ocho apellidos catalanes';
