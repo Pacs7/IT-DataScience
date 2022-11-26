@@ -49,6 +49,7 @@ SET FOREIGN_KEY_CHECKS=0;
 DELETE FROM tb_movie WHERE movie_title='La Gran Familia Española';
 SET FOREIGN_KEY_CHECKS=1;
 
+-- Es pot deshabilitar els foreign_key checks o bé es pot modificar l'esquema on estiguin descrites les foreign keys
 -- You can disable foreign_key checks or you can modify the schema of the foreign keys, thus needing to create a new table, as they express the relational nature of the database
 
 ------------------------------------------------------------------------------------------------
